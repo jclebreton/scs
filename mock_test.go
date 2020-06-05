@@ -10,7 +10,7 @@ import (
 
 	"github.com/stretchr/testify/mock"
 
-	"github.com/alexedwards/scs/v2"
+	"github.com/jclebreton/scs/v2"
 )
 
 var (

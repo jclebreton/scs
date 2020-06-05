@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/alexedwards/scs/v2"
+	"github.com/jclebreton/scs/v2"
 )
 
 func TestAsInterface(t *testing.T) {

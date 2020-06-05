@@ -1,4 +1,4 @@
-module github.com/alexedwards/scs/sqlite3store
+module github.com/jclebreton/scs/sqlite3store
 
 go 1.12
 
