@@ -1,7 +1,7 @@
 # SCS: HTTP Session Management for Go
 
 [![GoDoc](https://godoc.org/github.com/jclebreton/scs?status.png)](https://pkg.go.dev/github.com/jclebreton/scs/v2?tab=doc)
-[![Build status](https://travis-ci.org/alexedwards/stack.svg?branch=master)](https://travis-ci.org/alexedwards/scs)
+[![Build status](https://travis-ci.org/jclebreton/stack.svg?branch=master)](https://travis-ci.org/jclebreton/scs)
 [![Go report card](https://goreportcard.com/badge/github.com/jclebreton/scs)](https://goreportcard.com/report/github.com/jclebreton/scs)
 [![Test coverage](http://gocover.io/_badge/github.com/jclebreton/scs)](https://gocover.io/github.com/jclebreton/scs)
 
@@ -129,15 +129,15 @@ Some other useful functions are [`Exists()`](https://godoc.org/github.com/jclebr
 
 Individual data items can be deleted from the session using the [`Remove()`](https://godoc.org/github.com/jclebreton/scs#SessionManager.Remove) method. Alternatively, all session data can de deleted by using the [`Destroy()`](https://godoc.org/github.com/jclebreton/scs#SessionManager.Destroy) method. After calling `Destroy()`, any further operations in the same request cycle will result in a new session being created --- with a new session token and a new lifetime.
 
-Behind the scenes SCS uses gob encoding to store session data, so if you want to store custom types in the session data they must be [registered](https://golang.org/pkg/encoding/gob/#Register) with the encoding/gob package first. Struct fields of custom types must also be exported so that they are visible to the encoding/gob package. Please [see here](https://gist.github.com/alexedwards/d6eca7136f98ec12ad606e774d3abad3) for a working example.
+Behind the scenes SCS uses gob encoding to store session data, so if you want to store custom types in the session data they must be [registered](https://golang.org/pkg/encoding/gob/#Register) with the encoding/gob package first. Struct fields of custom types must also be exported so that they are visible to the encoding/gob package. Please [see here](https://gist.github.com/jclebreton/d6eca7136f98ec12ad606e774d3abad3) for a working example.
 
 ### Loading and Saving Sessions
 
 Most applications will use the [`LoadAndSave()`](https://godoc.org/github.com/jclebreton/scs#SessionManager.LoadAndSave) middleware. This middleware takes care of loading and committing session data to the session store, and communicating the session token to/from the client in a cookie as necessary.
 
-If you want to customize the behavior (like communicating the session token to/from the client in a HTTP header, or creating a distributed lock on the session token for the duration of the request) you are encouraged to create your own alternative middleware using the code in [`LoadAndSave()`](https://godoc.org/github.com/jclebreton/scs#SessionManager.LoadAndSave) as a template. An example is [given here](https://gist.github.com/alexedwards/cc6190195acfa466bf27f05aa5023f50).
+If you want to customize the behavior (like communicating the session token to/from the client in a HTTP header, or creating a distributed lock on the session token for the duration of the request) you are encouraged to create your own alternative middleware using the code in [`LoadAndSave()`](https://godoc.org/github.com/jclebreton/scs#SessionManager.LoadAndSave) as a template. An example is [given here](https://gist.github.com/jclebreton/cc6190195acfa466bf27f05aa5023f50).
 
-Or for more fine-grained control you can load and save sessions within your individual handlers (or from anywhere in your application). [See here](https://gist.github.com/alexedwards/0570e5a59677e278e13acb8ea53a3b30) for an example.
+Or for more fine-grained control you can load and save sessions within your individual handlers (or from anywhere in your application). [See here](https://gist.github.com/jclebreton/0570e5a59677e278e13acb8ea53a3b30) for an example.
 
 ### Configuring the Session Store
 
@@ -204,7 +204,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 
 ### Multiple Sessions per Request
 
-It is possible for an application to support multiple sessions per request, with different lifetime lengths and even different stores. Please [see here for an example](https://gist.github.com/alexedwards/22535f758356bfaf96038fffad154824).
+It is possible for an application to support multiple sessions per request, with different lifetime lengths and even different stores. Please [see here for an example](https://gist.github.com/jclebreton/22535f758356bfaf96038fffad154824).
 
 ### Compatibility
 
